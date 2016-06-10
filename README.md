@@ -27,4 +27,4 @@ Run command below.
     
 ## Sample Screen
 ### travis
-<img src="https://raw.githubusercontent.com/megumiteam/serverless-unittest-boilerplate/master/screenshot-1.png" title="travis"/>
+<img src="https://raw.githubusercontent.com/horike37/serverless-unittest-boilerplate/master/screenshot-1.png" title="travis"/>
