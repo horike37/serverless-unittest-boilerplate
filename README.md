@@ -26,5 +26,5 @@ Run command below.
     $ serverless test scaffold
     
 ## Sample Screen
-### travis
+The screen is succeed to build in travis
 <img src="https://raw.githubusercontent.com/horike37/serverless-unittest-boilerplate/master/screenshot-1.png" title="travis"/>
