@@ -24,3 +24,7 @@ Add the scripts to pakage.json file
 Run command below.
 
     $ serverless test scaffold
+    
+## Sample Screen
+### travis
+<img src="https://raw.githubusercontent.com/horike37/serverless-unittest-boilerplate/master/screenshot-1.png" title="travis"/>
