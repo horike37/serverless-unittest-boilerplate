@@ -1,5 +1,5 @@
 {
-  "name": "serverless-unittest-boilplate",
+  "name": "serverless-unittest-boilerplate",
   "version": "0.1.0",
   "engines": {
     "node": ">=4.0"
