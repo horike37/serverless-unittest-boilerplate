@@ -1,3 +1,4 @@
+[![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
 # Serverless UnitTest Boilerplate
 ## Overview
 This module is Serverless Framework plugin. Create UnitTest boilerplate in a Serverless Project.
