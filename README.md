@@ -20,6 +20,12 @@ Add the scripts to pakage.json file
     "scripts": {
         "test": "export NODE_PATH=`npm root -g` && mocha tests/all"
     }
+    
+Install `mocha` and `chai`. Run command below;
+
+    $ npm install chai --save-dev
+    $ npm install mocha --save-dev
+
 ## Usage
 Run command below.
 
