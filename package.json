@@ -1,6 +1,6 @@
 {
   "name": "serverless-unittest-boilerplate",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "engines": {
     "node": ">=4.0"
   },
@@ -33,8 +33,6 @@
     "mocha": "^2.2.5"
   },
   "dependencies": {
-    "bluebird": "^3.0.6",
-    "chai": "^3.2.0",
-    "mocha": "^2.2.5"
+    "bluebird": "^3.0.6"
   }
 }
