@@ -21,8 +21,8 @@ module.exports = function(S) {
 
     registerActions() {
 
-      S.addAction(this._testScaffold.bind(this), {
-        handler:       '_testScaffold',
+      S.addAction(this.testScaffold.bind(this), {
+        handler:       'testScaffold',
         description:   'Create UnitTest Template',
         context:       'test',
         contextAction: 'scaffold'
@@ -31,18 +31,40 @@ module.exports = function(S) {
       return BbPromise.resolve();
     }
 
-    _testScaffold(evt) {
-
+    testScaffold(evt) {
+      this.evt = evt;
       let _this = this;
 
       return new BbPromise(function (resolve, reject) {
-        _this.mkdir('tests').then(function () {
-          return _this.makeFile('tests/all.js', _this.getTestFile());
+        _this._validateAndPrepare().then(function(){
+          return  _this.mkdir(evt.options.testdir);
+        }).then(function () {
+          return _this.makeFile(evt.options.testfile, _this.getTestFile());
         }).then(function() {
-          return _this.makeFile('.travis.yml', _this.getTravisFile());
+          return _this.makeFile(evt.options.travisfile, _this.getTravisFile());
         })
       });
       
+    }
+    
+    /**
+     * Validate And Prepare
+     */
+
+    _validateAndPrepare() {
+      if (!this.evt.options.testdir) {
+        this.evt.options.testdir = 'tests';
+      }
+      
+      if (!this.evt.options.testfile) {
+        this.evt.options.testfile = this.evt.options.testdir + '/all.js';
+      }
+      
+      if (!this.evt.options.travisfile) {
+        this.evt.options.travisfile = '.travis.yml';
+      }
+      
+      return BbPromise.resolve();
     }
     
     mkdir(dirname){
