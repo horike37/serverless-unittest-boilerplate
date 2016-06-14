@@ -37,11 +37,15 @@ module.exports = function(S) {
 
       return new BbPromise(function (resolve, reject) {
         _this._validateAndPrepare().then(function(){
-          return  _this.mkdir(evt.options.testdir);
+          return _this.mkdir(evt.options.testdir);
         }).then(function () {
+          return _this.makeFile(evt.options.travisfile, _this.getTravisFile());
+        }).then(function() {
           return _this.makeFile(evt.options.testfile, _this.getTestFile());
         }).then(function() {
-          return _this.makeFile(evt.options.travisfile, _this.getTravisFile());
+          return resolve();
+        }).catch(function (error) {
+          return reject(error);
         })
       });
       
@@ -63,7 +67,6 @@ module.exports = function(S) {
       if (!this.evt.options.travisfile) {
         this.evt.options.travisfile = '.travis.yml';
       }
-      
       return BbPromise.resolve();
     }
     
@@ -80,7 +83,7 @@ module.exports = function(S) {
     makeFile(filepath, data){
       return new BbPromise(function(resolve, reject) {
         fs.writeFileAsync(filepath, data).then(function() { 
-          return resolve();
+          return resolve(filepath);
         }).catch(function (error) {
           return reject('Already exists '+filepath+' file');
         })
