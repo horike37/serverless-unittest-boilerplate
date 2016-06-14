@@ -1,4 +1,5 @@
 [![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
+[![Build Status](https://travis-ci.org/horike37/serverless-unittest-boilerplate.svg?branch=master)](https://travis-ci.org/horike37/serverless-unittest-boilerplate)
 # Serverless UnitTest Boilerplate
 ## Overview
 This module is Serverless Framework plugin. Create UnitTest boilerplate in a Serverless Project.
