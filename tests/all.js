@@ -3,11 +3,26 @@
 const Serverless = require('serverless'),
       path       = require('path'),
       chai       = require('chai'),
-      should     = chai.should();
+      should     = chai.should(),
+      fs         = require('fs');
+      chai.use(require('chai-fs'));
 
 let s, plugin, UnitTestBoilerplate, instance;
+let options = {
+      testdir   : 'tests/tests',
+      testfile  : 'tests/tests/panpan.js',
+      travisfile: 'tests/.travis.yml'
+    };
 
 describe('ServerlessUnitTestBoilerplate', function() {
+
+  after(function() {
+    this.timeout(0);
+    console.log(fs.unlinkSync(options.testfile));
+    fs.unlinkSync(options.travisfile);
+    fs.rmdirSync(options.testdir);
+  });
+  
   beforeEach(function(done) {
     this.timeout(0);
 
@@ -35,21 +50,17 @@ describe('ServerlessUnitTestBoilerplate', function() {
 
   describe('getName()', function() {
     it('should return the correct name', function() {
-      CmdEventPlugin.getName().should.equal('UnitTestBoilerplate');
+      UnitTestBoilerplate.getName().should.equal('UnitTestBoilerplate');
     });
   });
   
   describe('serverless test scaffold', function() {
     it('should built unittest template', function(done) {
       this.timeout(0);
-      let options = {
-        testdir: 'tests/tests',
-        testfile: 'tests/tests/panpan.js',
-        travisfile: 'tests/.travis.yml'
-      };
 
       s.actions.testScaffold(options)
-         .then(function(evt) {
+         .then(function(options) {
+           options.testdir.should.be.a.directory();
            done();
          })
          .catch(e => {
